@@ -1,0 +1,8 @@
+.photos__container {
+  display: flex;
+  justify-content: space-between;
+  width: 246px;
+  align-self: center;
+  padding-top: 25px;
+  padding-bottom: 32px;
+}

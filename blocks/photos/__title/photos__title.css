@@ -1,0 +1,9 @@
+.photos__title {
+  color: #000;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
