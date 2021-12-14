@@ -1,0 +1,7 @@
+.header {
+  width: 100%;
+  max-width: 880px;
+  height: 56px;
+  padding-top: 28px;
+  border-bottom: solid 1px #545454;
+}
