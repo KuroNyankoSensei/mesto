@@ -1,0 +1,15 @@
+.popup__title {
+  font-size: 18px;
+  font-weight: 900;
+  margin: 0;
+  padding-bottom: 75px;
+  text-align: center;
+}
+
+@media screen and (min-width: 880px) {
+  .popup__title {
+    padding-bottom: 54px;
+    font-size: 24px;
+    text-align: start;
+  }
+}
