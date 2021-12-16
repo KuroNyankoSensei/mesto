@@ -1,4 +1,4 @@
 .photos {
-  width: 88%;
+  max-width: 880px;
   margin: 0 auto;
 }

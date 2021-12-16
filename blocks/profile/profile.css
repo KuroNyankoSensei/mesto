@@ -7,3 +7,11 @@
   padding-top: 42px;
   padding-bottom: 33px;
 }
+
+@media screen and (min-width: 880px) {
+  .profile {
+    flex-direction: row;
+    width: 880px;
+    padding-bottom: 50px;
+  }
+}
