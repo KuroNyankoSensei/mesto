@@ -1,6 +1,7 @@
 .profile__job {
   margin: 0;
   font-size: 14px;
+  line-height: 17px;
   font-weight: 400;
   padding-top: 9px;
   padding-bottom: 33px;
@@ -9,6 +10,7 @@
 @media screen and (min-width: 880px) {
   .profile__job {
     font-size: 18px;
+    line-height: 22px;
     padding: 0;
   }
 }
