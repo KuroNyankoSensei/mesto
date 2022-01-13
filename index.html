@@ -25,57 +25,16 @@
     </section>
     <section class="photos">
       <ul class="photos__list">
-        <li class="photos__list-item">
-          <img class="photos__image" src="./images/nara-srine.jpg" alt="храм в Нара">
-          <div class="photos__container">
-            <h2 class="photos__title">Храм в Нара</h2>
-            <button type="button" class="button photos__like-button"><img src="./images/heart.svg" alt="кнопка лайк"></button>
-          </div>
-        </li>
-        <li class="photos__list-item">
-          <img class="photos__image" src="./images/kamakura-station.jpg" alt="Станция Камакура">
-          <div class="photos__container">
-            <h2 class="photos__title">Станция Камакура</h2>
-            <button type="button" class="button photos__like-button"><img src="./images/heart.svg" alt="кнопка лайк"></button>
-          </div>
-        </li>
-        <li class="photos__list-item">
-          <img class="photos__image" src="./images/kobe-shrine.jpg" alt="Храм в Кобе">
-          <div class="photos__container">
-            <h2 class="photos__title">Храм в Кобе</h2>
-            <button type="button" class="button photos__like-button"><img src="./images/heart.svg" alt="кнопка лайк"></button>
-          </div>
-        </li>
-        <li class="photos__list-item">
-          <img class="photos__image" src="./images/kobe-streets.jpg" alt="Улицы Кобе">
-          <div class="photos__container">
-            <h2 class="photos__title">Улицы Кобе</h2>
-            <button type="button" class="button photos__like-button"><img src="./images/heart.svg" alt="кнопка лайк"></button>
-          </div>
-        </li>
-        <li class="photos__list-item">
-          <img class="photos__image" src="./images/kyoto-ginkakuji.jpg" alt="Гинкакудзи в Киото">
-          <div class="photos__container">
-            <h2 class="photos__title">Гинкакудзи в Киото</h2>
-            <button type="button" class="button photos__like-button"><img src="./images/heart.svg" alt="кнопка лайк"></button>
-          </div>
-        </li>
-        <li class="photos__list-item">
-          <img class="photos__image" src="./images/kyoto-fushimi.jpg" alt="Храм Фусими в Киото">
-          <div class="photos__container">
-            <h2 class="photos__title">Фусими в Киото</h2>
-            <button type="button" class="button photos__like-button"><img src="./images/heart.svg" alt="кнопка лайк"></button>
-          </div>
-        </li>
+        
       </ul>
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy;2020 Mesto Russia</p>
   </footer>
-  <!-- спасибо за комментарии, все пункты из "можно лучше" я сделаю -->
-  <div class="popup">
-    <button type="button" class="button popup__close-button"><img class="popup__close-btn-image" src="./images/close-btn.svg" alt="кнопка закрыть"></button>
+  
+  <div class="popup popup_type_profile-edit">
+    <button type="button" class="button popup__close-button"></button>
     <div class="popup__content">
       <form name="popup" class="popup__form">
         <h2 class="popup__title">Редактировать профиль</h2>
@@ -85,6 +44,28 @@
       </form>
     </div>
   </div>
-  <script src="./scripts/script.js"></script>
+
+  <div class="popup popup_type_add-card">
+    <button type="button" class="button popup__close-button"></button>
+    <div class="popup__content">
+      <form name="popup" class="popup__form">
+        <h2 class="popup__title">Новое место</h2>
+        <input type="text" class="popup__input popup__input_type_place-name" name="place-name" placeholder="Название" required>
+        <input type="text" class="popup__input popup__input_type_link" name="link" placeholder="Ссылка на картинку" required>
+        <button class="button popup__save-button" type="submit" aria-label="кнопка создать">Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <template class="card-template">
+    <li class="photos__list-item">
+      <img class="photos__image" src="" alt="">
+      <div class="photos__container">
+        <h2 class="photos__title"></h2>
+        <button type="button" class="button photos__like-button"></button>
+      </div>
+    </li>
+  </template>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>
