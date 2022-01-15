@@ -1,0 +1,10 @@
+.photos__delete-button {
+  background: url("../../../images/trash-icon.svg") center no-repeat;
+  background-size: 18px 19px;
+  width: 18px;
+  height: 19px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  
+}

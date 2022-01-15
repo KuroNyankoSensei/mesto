@@ -33,22 +33,24 @@ function createCard(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.photos__image');
   const cardTitle = cardElement.querySelector('.photos__title');
+  const deleteButton = cardElement.querySelector('.photos__delete-button');
 
   cardTitle.textContent = cardData.name;
   cardImage.src = cardData.link;
+
+  cardElement.querySelector('.photos__like-button').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('photos__like-button_active');
+  });
+
+  deleteButton.addEventListener('click', function () {
+    const cardElement = deleteButton.closest('.photos__list-item');
+    cardElement.remove();
+  });
 
   list.prepend(cardElement);
 }
 
 initialCards.forEach(createCard);
-
-//Like button
-// const likeButton = cardTemplate.querySelector('.photos__like-button');
-// function likeButtonActive() {
-//   console.log('active');
-//   likeButton.classList.toggle('photos__like-button_active');
-// };
-// likeButton.addEventListener('click', likeButtonActive());
 
 //Popups
 const popupProfileEdit = document.querySelector('.popup_type_profile-edit');
