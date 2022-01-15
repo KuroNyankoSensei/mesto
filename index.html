@@ -34,8 +34,8 @@
   </footer>
   
   <div class="popup popup_type_profile-edit">
-    <button type="button" class="button popup__close-button"></button>
     <div class="popup__content">
+      <button type="button" class="button popup__close-button"></button>
       <form name="popup" class="popup__form">
         <h2 class="popup__title">Редактировать профиль</h2>
         <input type="text" class="popup__input popup__input_type_name" name="name" placeholder="Имя" required>
@@ -46,8 +46,8 @@
   </div>
 
   <div class="popup popup_type_add-card">
-    <button type="button" class="button popup__close-button"></button>
     <div class="popup__content">
+      <button type="button" class="button popup__close-button"></button>
       <form name="popup" class="popup__form">
         <h2 class="popup__title">Новое место</h2>
         <input type="text" class="popup__input popup__input_type_place-name" name="place-name" placeholder="Название" required>
@@ -55,6 +55,14 @@
         <button class="button popup__save-button" type="submit" aria-label="кнопка создать">Создать</button>
       </form>
     </div>
+  </div>
+
+  <div class="popup popup_type_image">
+    <figure class="popup__image-container">
+      <button type="button" class="button popup__close-button"></button>
+      <img class="popup__image" src="" alt="">
+      <figcaption class="popup__image-description"></figcaption>
+    </figure>
   </div>
 
   <template class="card-template">
