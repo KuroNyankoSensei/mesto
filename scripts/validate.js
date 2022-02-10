@@ -1,7 +1,5 @@
 function submitForm(event) {
     event.preventDefault();
-
-    console.log('form submitted');
 }
 
 function showError(input, errorContainer, errorText, { inputErrorClass, errorVisibleClass }) {
@@ -19,7 +17,6 @@ function hideError(input, errorContainer, { inputErrorClass, errorVisibleClass }
 function toggleButton(form, { buttonSelector, inactiveButtonClass }) {
     const button = form.querySelector(buttonSelector);
     const isFormValid = form.checkValidity();
-    console.log('isFormValid');
 
     if (isFormValid) {
         button.classList.remove(inactiveButtonClass);
@@ -46,7 +43,6 @@ function validateInput(form, input, classes) {
 }
 
 function enableValidation({ formSelector, inputSelector, ...rest }) {
-    console.log('enable validation');
     const forms = document.querySelectorAll(formSelector);
 
     forms.forEach(form => {

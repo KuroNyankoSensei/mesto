@@ -34,6 +34,7 @@
   </footer>
   
   <div class="popup popup_type_profile-edit">
+    <div class="popup__overlay"></div>
     <div class="popup__content">
       <button type="button" class="button popup__close-button"></button>
       <form name="popup" class="popup__form" novalidate>
@@ -42,12 +43,13 @@
         <span id="error-name" class="error-message"></span>
         <input id="job" type="text" class="popup__input popup__input_type_job" name="job" placeholder="О себе" required minlength="2" maxlength="200">
         <span id="error-job" class="error-message"></span>
-        <button class="button popup__save-button popup__save-button_disabled" type="submit" aria-label="кнопка сохранить" disabled>Сохранить</button>
+        <button class="button popup__save-button popup__save-button_disabled" type="submit" aria-label="кнопка сохранить">Сохранить</button>
       </form>
     </div>
   </div>
 
   <div class="popup popup_type_add-card">
+    <div class="popup__overlay"></div>
     <div class="popup__content">
       <button type="button" class="button popup__close-button"></button>
       <form name="popup" class="popup__form" novalidate>
@@ -56,12 +58,13 @@
         <span id="error-place-name" class="error-message"></span>
         <input id="link" type="url" class="popup__input popup__input_type_link" name="link" placeholder="Ссылка на картинку" required>
         <span id="error-link" class="error-message"></span>
-        <button class="button popup__save-button popup__save-button_disabled" type="submit" aria-label="кнопка создать" disabled>Создать</button>
+        <button id="addCard-button" class="button popup__save-button popup__save-button_disabled" type="submit" aria-label="кнопка создать">Создать</button>
       </form>
     </div>
   </div>
 
   <div class="popup popup_type_image">
+    <div class="popup__overlay"></div>
     <figure class="popup__image-container">
       <button type="button" class="button popup__close-button"></button>
       <img class="popup__image">
