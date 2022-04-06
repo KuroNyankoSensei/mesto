@@ -1,3 +1,5 @@
+import { FormValidator } from './FormValidator.js';
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -55,6 +57,22 @@ const popupCardTitle = document.querySelector('.popup__image-description');
 //Add card
 const placeNameInput = popupAddCard.querySelector('.popup__input_type_place-name');
 const linkInput = popupAddCard.querySelector('.popup__input_type_link');
+
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  errorSelector: '.error-message',
+  buttonSelector: '.popup__save-button',
+  inputErrorClass: 'popup__input_invalid',
+  errorVisibleClass: 'error-message_visible',
+  inactiveButtonClass: 'popup__save-button_disabled'
+};
+
+const editProfileValidator = new FormValidator(validationConfig, editFormElement)
+const addCardValidator = new FormValidator(validationConfig, addFormElement)
+
+editProfileValidator.enableValidation();
+addCardValidator.enableValidation();
 
 //open close popup
 function closeEsc(evt) {
