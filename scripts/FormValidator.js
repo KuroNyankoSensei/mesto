@@ -21,17 +21,17 @@ export class FormValidator {
     }
 
     _setEventListeners() {
-        const inputs = this._form.querySelectorAll(this._settings.inputSelector);
-        inputs.forEach(input => {
+        this._inputs = this._form.querySelectorAll(this._settings.inputSelector);
+        this._inputs.forEach(input => {
             input.addEventListener('input', () => {
                 this._validateInput(input);
             });
-            this._toggleButton();
+            this.toggleButton();
         });
 
     }
 
-    _toggleButton() {
+    toggleButton() {
         const button = this._form.querySelector(this._settings.buttonSelector);
         const isFormValid = this._form.checkValidity();
 
@@ -47,8 +47,8 @@ export class FormValidator {
     _validateInput(input) {
         this._errorContainer = this._form.querySelector(`#error-${input.id}`);
 
-        let isValid = input.validity.valid;
-        let errorText = input.validationMessage;
+        const isValid = input.validity.valid;
+        const errorText = input.validationMessage;
 
         if (isValid) {
             this._hideError(input);
@@ -56,13 +56,11 @@ export class FormValidator {
             this._showError(input, errorText);
         }
 
-        this._toggleButton();
+        this.toggleButton();
     }
 
     enableValidation() {
         this._form.addEventListener('submit', this._submitForm);
-
         this._setEventListeners();
     }
-
 }

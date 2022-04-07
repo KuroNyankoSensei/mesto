@@ -35,12 +35,12 @@ const popupList = document.querySelectorAll('.popup');
 
 //Buttons
 const profileEditButton = document.querySelector('.profile__edit-button');
-const addCardButton = document.querySelector('.profile__add-button');
-const saveAddCardButton = document.querySelector('#addCard-button');
+const cardAddButton = document.querySelector('.profile__add-button');
+const cardAddSaveButton = document.querySelector('#addCard-button');
 
 //Forms
-const editFormElement = popupProfileEdit.querySelector('.popup__form');
-const addFormElement = popupAddCard.querySelector('.popup__form');
+const profileEditFormElement = popupProfileEdit.querySelector('.popup__form');
+const cardAddFormElement = popupAddCard.querySelector('.popup__form');
 
 //Profile
 const nameInput = popupProfileEdit.querySelector('.popup__input_type_name');
@@ -49,7 +49,7 @@ const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
 
 //List template
-const list = document.querySelector('.photos__list');
+const cardsContainer = document.querySelector('.photos__list');
 
 //Add card
 const placeNameInput = popupAddCard.querySelector('.popup__input_type_place-name');
@@ -66,28 +66,31 @@ const validationConfig = {
   inactiveButtonClass: 'popup__save-button_disabled'
 };
 
-const editProfileValidator = new FormValidator(validationConfig, editFormElement)
-const addCardValidator = new FormValidator(validationConfig, addFormElement)
+const profileEditValidator = new FormValidator(validationConfig, profileEditFormElement)
+const cardAddValidator = new FormValidator(validationConfig, cardAddFormElement)
 
-editProfileValidator.enableValidation();
-addCardValidator.enableValidation();
+profileEditValidator.enableValidation();
+cardAddValidator.enableValidation();
 
 //close popup
 popupList.forEach(element => {
   const overlay = element.querySelector('.popup__overlay');
-  const closeButtons = element.querySelector('.popup__close-button');
+  const popupCloseButtons = element.querySelector('.popup__close-button');
   overlay.addEventListener('click', () => closePopup(element));
-  closeButtons.addEventListener('click', () => closePopup(element));
+  popupCloseButtons.addEventListener('click', () => closePopup(element));
 });
 
 //edit profile
 function inputInfo() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
+
 };
-profileEditButton.addEventListener('click', () => inputInfo());
-profileEditButton.addEventListener('click', () => openPopup(popupProfileEdit));
-editFormElement.addEventListener('submit', (evt) => {
+profileEditButton.addEventListener('click', () => {
+  inputInfo();
+  openPopup(popupProfileEdit);
+});
+profileEditFormElement.addEventListener('submit', (evt) => {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
@@ -95,24 +98,30 @@ editFormElement.addEventListener('submit', (evt) => {
 });
 
 //add card
-addCardButton.addEventListener('click', () => openPopup(popupAddCard));
-addFormElement.addEventListener('submit', (evt) => {
+cardAddButton.addEventListener('click', () => {
+  cardAddValidator.toggleButton();
+  openPopup(popupAddCard);
+});
+cardAddFormElement.addEventListener('submit', (evt) => {
   evt.preventDefault();
+  closePopup(popupAddCard);
   renderPlaceCard({
     name: placeNameInput.value,
     link: linkInput.value
   });
-  saveAddCardButton.classList.add('popup__save-button_disabled');
-  saveAddCardButton.setAttribute('disabled', '');
-  addFormElement.reset();
-  closePopup(popupAddCard);
+  cardAddFormElement.reset();
 });
 
 //create card
-const renderPlaceCard = (data) => {
-  const card = new Card(data);
+const createCard = (data) => {
+  const card = new Card(data, '.card-template');
   const cardElement = card.createCard();
-  list.prepend(cardElement)
+  return cardElement;
+}
+
+const renderPlaceCard = (data) => {
+  const card = createCard(data);
+  cardsContainer.prepend(card);
 };
 
 initialCards.forEach(renderPlaceCard);

@@ -6,4 +6,6 @@
     transition: .3s;
     padding: 0;
     opacity: 0;
+    display: block;
+    height: 30px;
 }
