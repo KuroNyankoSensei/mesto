@@ -9,12 +9,14 @@ export class FormValidator {
     }
 
     _showError(input, errorText) {
+        this._errorContainer = this._form.querySelector(`#error-${input.id}`);
         input.classList.add(this._settings.inputErrorClass);
         this._errorContainer.classList.add(this._settings.errorVisibleClass);
         this._errorContainer.textContent = errorText;
     }
 
     _hideError(input) {
+        this._errorContainer = this._form.querySelector(`#error-${input.id}`);
         input.classList.remove(this._settings.inputErrorClass);
         this._errorContainer.classList.remove(this._settings.errorVisibleClass);
         this._errorContainer.textContent = '';
@@ -45,8 +47,6 @@ export class FormValidator {
     }
 
     _validateInput(input) {
-        this._errorContainer = this._form.querySelector(`#error-${input.id}`);
-
         const isValid = input.validity.valid;
         const errorText = input.validationMessage;
 
