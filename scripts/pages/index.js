@@ -1,6 +1,10 @@
-import { openPopup, closePopup } from './utils.js';
-import { FormValidator } from './FormValidator.js';
-import { Card } from './Card.js';
+import { FormValidator } from '../components/FormValidator.js';
+import { Section } from '../components/Section.js';
+import { Card } from '../components/Card.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { UserInfo } from '../components/UserInfo.js';
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -31,7 +35,7 @@ const initialCards = [
 //Popups
 const popupProfileEdit = document.querySelector('.popup_type_profile-edit');
 const popupAddCard = document.querySelector('.popup_type_add-card');
-const popupList = document.querySelectorAll('.popup');
+
 
 //Buttons
 const profileEditButton = document.querySelector('.profile__edit-button');
@@ -50,10 +54,6 @@ const profileJob = document.querySelector('.profile__job');
 //List template
 const cardsContainer = document.querySelector('.photos__list');
 
-//Add card
-const placeNameInput = popupAddCard.querySelector('.popup__input_type_place-name');
-const linkInput = popupAddCard.querySelector('.popup__input_type_link');
-
 //validation
 const validationConfig = {
   formSelector: '.popup__form',
@@ -71,49 +71,41 @@ const cardAddValidator = new FormValidator(validationConfig, cardAddFormElement)
 profileEditValidator.enableValidation();
 cardAddValidator.enableValidation();
 
-//close popup
-popupList.forEach(element => {
-  const overlay = element.querySelector('.popup__overlay');
-  const popupCloseButtons = element.querySelector('.popup__close-button');
-  overlay.addEventListener('click', () => closePopup(element));
-  popupCloseButtons.addEventListener('click', () => closePopup(element));
-});
-
 //edit profile
-function inputInfo() {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-
-};
+const handleProfileFormSubmit = (data) => {
+  const { name, job } = data;
+  userInfo.setUserInfo(name, job);
+  editProfilePopup.close();
+}
 profileEditButton.addEventListener('click', () => {
-  inputInfo();
-  openPopup(popupProfileEdit);
+  const { name, job } = userInfo.getUserInfo();
+  nameInput.value = name;
+  jobInput.value = job;
+  editProfilePopup.open();
 });
-profileEditFormElement.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
-  closePopup(popupProfileEdit);
-});
+
 
 //add card
+const handleCardFormSubmit = (data) => {
+  const card = createCard({
+    name: data['place-name'],
+    link: data.link
+  })
+  section.addItem(card)
+  addCardPopup.close();
+}
+
 cardAddButton.addEventListener('click', () => {
   cardAddValidator.toggleButton();
-  openPopup(popupAddCard);
+  addCardPopup.open();
 });
-cardAddFormElement.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  closePopup(popupAddCard);
-  renderPlaceCard({
-    name: placeNameInput.value,
-    link: linkInput.value
-  });
-  cardAddFormElement.reset();
-});
+
 
 //create card
 const createCard = (data) => {
-  const card = new Card(data, '.card-template');
+  const card = new Card(data, '.card-template', () => {
+    imagePopup.open(data.name, data.link)
+  });
   const cardElement = card.createCard();
   return cardElement;
 }
@@ -123,4 +115,13 @@ const renderPlaceCard = (data) => {
   cardsContainer.prepend(card);
 };
 
-initialCards.forEach(renderPlaceCard);
+const section = new Section({ items: initialCards, renderer: renderPlaceCard }, '.photos__list');
+const imagePopup = new PopupWithImage('.popup_type_image');
+const editProfilePopup = new PopupWithForm('.popup_type_profile-edit', handleProfileFormSubmit);
+const addCardPopup = new PopupWithForm('.popup_type_add-card', handleCardFormSubmit);
+imagePopup.setEventListeners();
+editProfilePopup.setEventListeners();
+addCardPopup.setEventListeners();
+section.renderItems();
+
+const userInfo = new UserInfo({ profileNameSelector: '.profile__name', profileJobSelector: '.profile__job' });
