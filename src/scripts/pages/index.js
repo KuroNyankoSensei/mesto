@@ -50,11 +50,6 @@ const cardAddFormElement = popupAddCard.querySelector('.popup__form');
 //Profile
 const nameInput = popupProfileEdit.querySelector('.popup__input_type_name');
 const jobInput = popupProfileEdit.querySelector('.popup__input_type_job');
-const profileName = document.querySelector('.profile__name');
-const profileJob = document.querySelector('.profile__job');
-
-//List template
-const cardsContainer = document.querySelector('.photos__list');
 
 //validation
 const validationConfig = {
@@ -73,6 +68,7 @@ const cardAddValidator = new FormValidator(validationConfig, cardAddFormElement)
 profileEditValidator.enableValidation();
 cardAddValidator.enableValidation();
 
+
 //edit profile
 const handleProfileFormSubmit = (data) => {
   const { name, job } = data;
@@ -80,10 +76,12 @@ const handleProfileFormSubmit = (data) => {
   editProfilePopup.close();
 }
 profileEditButton.addEventListener('click', () => {
+
   const { name, job } = userInfo.getUserInfo();
   nameInput.value = name;
   jobInput.value = job;
   editProfilePopup.open();
+  profileEditValidator.resetValidation();
 });
 
 
@@ -98,8 +96,8 @@ const handleCardFormSubmit = (data) => {
 }
 
 cardAddButton.addEventListener('click', () => {
-  cardAddValidator.toggleButton();
   addCardPopup.open();
+  cardAddValidator.resetValidation();
 });
 
 
@@ -114,7 +112,7 @@ const createCard = (data) => {
 
 const renderPlaceCard = (data) => {
   const card = createCard(data);
-  cardsContainer.prepend(card);
+  section.addItem(card);
 };
 
 const section = new Section({ items: initialCards, renderer: renderPlaceCard }, '.photos__list');
