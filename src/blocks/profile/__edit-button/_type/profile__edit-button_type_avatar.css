@@ -1,0 +1,17 @@
+.profile__edit-button_type_avatar {
+    background-image: url("../../../../images/edit-button.svg");
+    background-size: 26px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    opacity: 0;
+    height: 120px;
+    width: 120px;
+    transition: opacity 0.3s ease;
+}
+
+.profile__edit-button_type_avatar:hover {
+    opacity: 80%;
+    background-color: black;
+
+}
