@@ -49,7 +49,7 @@ const popupEditAvatar = document.querySelector('.popup_type_avatar-edit');
 //Buttons
 const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
-const avatarEditButton = document.querySelector('.profile__edit-button_type_avatar')
+const avatarEditButton = document.querySelector('.profile__avatar-save-button')
 
 //save buttons
 const cardSaveButton = popupAddCard.querySelector('#addCard-button')

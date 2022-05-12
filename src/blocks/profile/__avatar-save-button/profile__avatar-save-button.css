@@ -1,4 +1,4 @@
-.profile__edit-button_type_avatar {
+.profile__avatar-save-button {
     background-image: url("../../../../images/edit-button.svg");
     background-size: 26px;
     background-repeat: no-repeat;
@@ -10,7 +10,7 @@
     transition: opacity 0.3s ease;
 }
 
-.profile__edit-button_type_avatar:hover {
+.profile__avatar-save-button:hover {
     opacity: 80%;
     background-color: black;
 
