@@ -3,7 +3,6 @@
   color: #000;
   border-radius: 10px;
   width: 282px;
-  height: 322px;
   position: relative;
   display: flex;
 }
@@ -11,6 +10,5 @@
 @media screen and (min-width: 880px) {
   .popup__content {
     width: 430px;
-    height: 330px;
   }
 }

@@ -8,7 +8,7 @@
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar-container/profile__avatar-container.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
-@import url(../blocks/profile/__edit-button/_type/profile__edit-button_type_avatar.css);
+@import url(../blocks/profile/__avatar-save-button/profile__avatar-save-button.css);
 @import url(../blocks/profile/__info-container/profile__info-container.css);
 @import url(../blocks/profile/__container/profile__container.css);
 @import url(../blocks/profile/__name/profile__name.css);
