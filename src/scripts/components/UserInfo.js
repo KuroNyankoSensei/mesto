@@ -14,11 +14,18 @@ export class UserInfo {
 
     }
 
+    getId() {
+        return this._id
+    }
+
+    setId(id) {
+        this._id = id
+    }
+
     setUserInfo({ name, about, avatar }) {
         this._nameELement.textContent = name;
         this._jobElement.textContent = about;
         this._avatarElement.src = avatar;
-
     }
 
 }

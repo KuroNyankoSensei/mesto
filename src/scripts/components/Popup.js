@@ -2,6 +2,8 @@ export class Popup {
     constructor(popupSelector) {
         this._popup = document.querySelector(popupSelector);
         this._handleEscClose = this._handleEscClose.bind(this);
+        this._overlay = this._popup.querySelector('.popup__overlay');
+        this._popupCloseButton = this._popup.querySelector('.popup__close-button');
     }
 
     _handleEscClose(evt) {
@@ -21,11 +23,8 @@ export class Popup {
     }
 
     setEventListeners() {
-        const overlay = this._popup.querySelector('.popup__overlay');
-        const popupCloseButton = this._popup.querySelector('.popup__close-button');
-
         this._popup.addEventListener('click', (e) => {
-            if (e.target === overlay || e.target === popupCloseButton) {
+            if (e.target === this._overlay || e.target === this._popupCloseButton) {
                 this.close()
             }
         })
